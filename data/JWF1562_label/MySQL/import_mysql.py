@@ -21,7 +21,7 @@ columns_name = columns_name.strip(',')
 for table in tables:
     for cpnum in range(10000):
         for num in range(nums[table]):
-            values = '500, \'2019-11-30 11:58:47\','
+            values = '{}, \'2019-11-30 11:58:47\','.format(501+num)
             for i in range(1,data.shape[1]):
                 values = values + str(data.iloc[cpnum,i]) + ','
             values = values.strip(',')

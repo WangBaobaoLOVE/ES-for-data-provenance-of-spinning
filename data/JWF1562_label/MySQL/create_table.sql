@@ -95,6 +95,7 @@ create table xishalabel1 (
 	ring_rise_distance int,
 	ring_rise_gap int,
 	PRIMARY KEY ( record_id ));
+alter table xishalabel1 add foreign key(before_record_id) references cusha(record_id);
 
 create table xishalabel2 (
 	record_id bigint not null auto_increment,
@@ -191,6 +192,7 @@ create table xishalabel2 (
 	ring_rise_distance int,
 	ring_rise_gap int,
 	PRIMARY KEY ( record_id ));
+alter table xishalabel2 add foreign key(before_record_id) references cusha(record_id);
 
 create table xishalabel3 (
 	record_id bigint not null auto_increment,
@@ -287,6 +289,7 @@ create table xishalabel3 (
 	ring_rise_distance int,
 	ring_rise_gap int,
 	PRIMARY KEY ( record_id ));
+alter table xishalabel3 add foreign key(before_record_id) references cusha(record_id);
 
 create table xishalabel4 (
 	record_id bigint not null auto_increment,
@@ -383,6 +386,7 @@ create table xishalabel4 (
 	ring_rise_distance int,
 	ring_rise_gap int,
 	PRIMARY KEY ( record_id ));
+alter table xishalabel4 add foreign key(before_record_id) references cusha(record_id);
 
 create table xishalabel5 (
 	record_id bigint not null auto_increment,
@@ -479,6 +483,7 @@ create table xishalabel5 (
 	ring_rise_distance int,
 	ring_rise_gap int,
 	PRIMARY KEY ( record_id ));
+alter table xishalabel5 add foreign key(before_record_id) references cusha(record_id);
 
 create table xishalabel6 (
 	record_id bigint not null auto_increment,
@@ -575,6 +580,7 @@ create table xishalabel6 (
 	ring_rise_distance int,
 	ring_rise_gap int,
 	PRIMARY KEY ( record_id ));
+alter table xishalabel6 add foreign key(before_record_id) references cusha(record_id);
 
 create table xishalabel7 (
 	record_id bigint not null auto_increment,
@@ -671,6 +677,7 @@ create table xishalabel7 (
 	ring_rise_distance int,
 	ring_rise_gap int,
 	PRIMARY KEY ( record_id ));
+alter table xishalabel7 add foreign key(before_record_id) references cusha(record_id);
 
 create table xishalabel8 (
 	record_id bigint not null auto_increment,
@@ -767,6 +774,7 @@ create table xishalabel8 (
 	ring_rise_distance int,
 	ring_rise_gap int,
 	PRIMARY KEY ( record_id ));
+alter table xishalabel8 add foreign key(before_record_id) references cusha(record_id);
 
 create table xishalabel9 (
 	record_id bigint not null auto_increment,
@@ -863,6 +871,7 @@ create table xishalabel9 (
 	ring_rise_distance int,
 	ring_rise_gap int,
 	PRIMARY KEY ( record_id ));
+alter table xishalabel9 add foreign key(before_record_id) references cusha(record_id);
 
 create table xishalabel10 (
 	record_id bigint not null auto_increment,
@@ -959,6 +968,7 @@ create table xishalabel10 (
 	ring_rise_distance int,
 	ring_rise_gap int,
 	PRIMARY KEY ( record_id ));
+alter table xishalabel10 add foreign key(before_record_id) references cusha(record_id);
 
 create table xishalabel11 (
 	record_id bigint not null auto_increment,
@@ -1055,6 +1065,7 @@ create table xishalabel11 (
 	ring_rise_distance int,
 	ring_rise_gap int,
 	PRIMARY KEY ( record_id ));
+alter table xishalabel11 add foreign key(before_record_id) references cusha(record_id);
 
 create table xishalabel12 (
 	record_id bigint not null auto_increment,
@@ -1151,3 +1162,4 @@ create table xishalabel12 (
 	ring_rise_distance int,
 	ring_rise_gap int,
 	PRIMARY KEY ( record_id ));
+alter table xishalabel12 add foreign key(before_record_id) references cusha(record_id);
