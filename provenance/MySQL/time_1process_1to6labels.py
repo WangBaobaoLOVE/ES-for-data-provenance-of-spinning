@@ -9,7 +9,12 @@ db = pymysql.connect("localhost","root","","mashan" )
 # 使用cursor()方法获取操作游标 
 cursor = db.cursor()
 
-sql = "select min(record_id),max(record_id) from JWF1312B_bingtiao"
+outfile = "1p_f1t6id.txt"
+xisha_table = 'JWF1562_xisha'
+cusha_table = 'JWF1418_cusha'
+base_table= 'x2c'
+
+sql = "select min(record_id),max(record_id) from {}".format(xisha_table)
 cursor.execute(sql)
 db.commit()
 result = cursor.fetchone()
@@ -25,15 +30,15 @@ for num in range(nums):
 
 print(xisha_ids)
 
-with open("1p_f1t6id.txt", 'a') as f:
+with open(outfile, 'a') as f:
     f.write('{}\n'.format('#'*70))
     f.write('# datetime:{}\n'.format(datetime.datetime.now()))
     f.write('# the process from xisha to cusha.\n')
     f.write('{}\n'.format('#'*70))
 
-base_table = 'b2s'
+################################
 for id_num in range(1,6+1):
-    with open("1p_f1t6id.txt", 'a') as f:
+    with open(outfile, 'a') as f:
         f.write('{} Start with {} ids in one sample data {}\n'.format('*'*15,id_num,'*'*15))
     total_time = []
     for xisha_id in xisha_ids:
@@ -41,20 +46,41 @@ for id_num in range(1,6+1):
         for num in range(nums):
             start = time.process_time()
             # 拿到相应的细纱数据
-            
+            sql = "select * from {} where record_id = {}".format(xisha_table, xisha_id)
+            cursor.execute(sql)
+            db.commit()
+            result = cursor.fetchone()
+            if num == 0:
+                with open(outfile, 'a') as f:
+                    f.write('要追溯的细纱数据：\n')
+                    f.write(str(result)+'\n')
+
             # 与细纱数据相关联的粗纱数据id
-            
+            sql = "select record_id_cusha from {}{} where record_id_xisha = {}".format(base_table, id_num, xisha_id)
+            cursor.execute(sql)
+            db.commit()
+            results = cursor.fetchall()
+   
             # 拿到粗纱数据
-            
+            for result in results:
+                sql = "select * from {} where record_id = {}".format(cusha_table, result[0])
+                cursor.execute(sql)
+                db.commit()
+                cusha_data = cursor.fetchone()
+                if num ==0:
+                    with open(outfile, 'a') as f:
+                        f.write('被追溯的粗纱数据：')
+                        f.write(str(cusha_data)+'\n')
+                       
             end = time.process_time()
             times.append(end-start)
         mean_time = sum(times)/nums
         total_time.append(mean_time)
         # 该过程进行10次。
-        with open("1p_f1t6id.txt", 'a') as f:
+        with open(outfile, 'a') as f:
             f.write('* xisha_id={}:{},mean_time:{}\n'.format(xisha_id, times, mean_time))
     # 共10个数据，每个10次追溯，将耗时平均作为该过程追溯的平均耗时。
-    with open("1p_f1t6id.txt", 'a') as f:
+    with open(outfile, 'a') as f:
         f.write('{} End {}\n'.format('*'*35,'*'*35))
         f.write('* {} with ids of {}:{},mean_time:{}\n'.format(base_table,id_num,total_time,sum(total_time)/len(xisha_ids)))
 
