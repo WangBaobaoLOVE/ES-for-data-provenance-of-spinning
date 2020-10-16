@@ -47,3 +47,38 @@
          1. csv2json.py ：数据转换；
          2. import_xisha.py ：数据存储；
          3. label_1_to_8.png，label_9_to_12.png ：实验结果。
+2. provenance文件夹:这里存放的是Elasticsearch和MySQL实现数据追溯在时间性能上的结果；
+   1. data：从纺纱厂采集到的现场数据。
+      1. JWF1211_shumian.csv：JWF1211型号系列梳棉机上采集到的数据；
+      2. JWF1312B_bingtiao.csv：JWF1312B型号系列并条机上采集到的数据；
+      3. JWF1418_cusha.csv ：JWF1418型号系列粗纱机上采集到的数据；
+      4. JWF1562_xisha.csv：JWF1562型号系列细纱机上采集到的数据；
+      5. SMARO-E_luotong.csv：SMARO-E型号系列络筒机上采集到的数据；
+   2. MySQL
+      1. create_table.sql：数据表（因为在存储上的效果太差，好像没有利用）；
+      2. create_table2.sql：构建原始数据表；
+      3. create_table_join.sql ：构建关联表；
+      4. import_shumuan.py ：导入所有原始梳棉数据；——JWF1211_shumian.csv
+      5. import_bingtiao.py：导入所有原始并条数据；——JWF1312B_bingtiao.csv（1~6个标识）
+      6. import_cusha.py：导入所有原始粗纱数据；——JWF1418_cusha.csv（1~6个标识）
+      7. import_xisha.py：导入所有原始细纱数据；——JWF1562_xisha.csv（1~6个标识）
+      8. import_luotong.py：导入所有原始络筒数据；——SMARO-E_luotong.csv（1~6个标识）
+      9. import_bt_cs_xs_lt.py：导入所有原始并条、粗纱、细纱、络筒数据（不带标识）
+      10. b2s.py ：构建并条到梳棉的关联表；
+      11. c2b.py ：构建粗纱到并条的关联表；
+      12. x2c.py ：构建细纱到粗纱的关联表；
+      13. l2x.py  ：构建络筒到细纱的关联表；
+      14. time_1process_1to6labels.py：
+      15. time_4process_1to6labels.py：
+      16. 1p_f1t6id.txt：time_1process_1to6labels.py中将追溯到的数据和耗费的时间打印输出，其输出和论文中的追溯路径是不同的，这两者是不同的概念，不要混淆；
+      17. 4p_f1t6id.txt：time_4process_1to6labels.py中将追溯到的数据和耗费的时间打印输出，其输出和论文中的追溯路径是不同的，这两者是不同的概念，不要混淆；
+   3. Elasticsearch
+      1. mysql2json_shumian.py ：在Elasticsearch重新构建可追溯的梳棉索引；
+      2. mysql2json_bingtiao.py：并条索引；
+      3. mysql2json_cusha.py ：粗纱索引；
+      4. mysql2json_xisha.py：细纱索引；
+      5. mysql2json_luotong.py：络筒索引；
+      6. time_1process_1to6labels.py ：细纱到粗纱，1个标识到6个标识的追溯时间结果；
+      7. 1p_f1t6id.txt：time_1process_1to6labels.py中将追溯到的数据和耗费的时间打印输出，其输出和论文中的追溯路径是不同的，这两者是不同的概念，不要混淆；
+      8. time_4process_1to6labels.py ：络筒->细纱->粗纱->并条->梳棉这个追溯过程，标识数目从1到6的追溯时间脚本；
+      9. 4p_f1t6id.txt：time_4process_1to6labels.py中将追溯到的数据和耗费的时间打印输出，其输出和论文中的追溯路径是不同的，这两者是不同的概念，不要混淆；
