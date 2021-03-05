@@ -1,0 +1,12 @@
+exec sp_spaceused cusha_to_xisha1
+exec sp_spaceused cusha_to_xisha2
+exec sp_spaceused cusha_to_xisha3
+exec sp_spaceused cusha_to_xisha4
+exec sp_spaceused cusha_to_xisha5
+exec sp_spaceused cusha_to_xisha6
+exec sp_spaceused cusha_to_xisha7
+exec sp_spaceused cusha_to_xisha8
+exec sp_spaceused cusha_to_xisha9
+exec sp_spaceused cusha_to_xisha10
+exec sp_spaceused cusha_to_xisha11
+exec sp_spaceused cusha_to_xisha12
