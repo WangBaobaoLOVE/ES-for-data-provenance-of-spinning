@@ -84,6 +84,11 @@
       7. 1p_f1t6id.txt：time_1process_1to6labels.py中将追溯到的数据和耗费的时间打印输出，其输出和论文中的追溯路径是不同的，这两者是不同的概念，不要混淆；
       8. time_4process_1to6labels.py ：络筒->细纱->粗纱->并条->梳棉这个追溯过程，标识数目从1到6的追溯时间脚本；
       9. 4p_f1t6id.txt：time_4process_1to6labels.py中将追溯到的数据和耗费的时间打印输出，其输出和论文中的追溯路径是不同的，这两者是不同的概念，不要混淆；
+
+### 补充实验——SQL Server
+
+1. ubuntn配置SQL Server：[link](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-linux-2017)
+2. 实验内容见目录——supplemental_experiment_SQL_server 
       
 ### 实验复现
 
